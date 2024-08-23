@@ -1,8 +1,8 @@
-import React from 'react'
+
 import '../styles/containers/auxcontainer.css'
 import { ITopArtist } from '../containers/AuxContainer'
 
-const DashboardTopArtists = ({ id, name, image} : ITopArtist) => {
+const DashboardTopArtists = ({  name, image} : ITopArtist) => {
   return (
     <div className='artist-card'>
         <img className='artist-img' src={image} alt={name} />

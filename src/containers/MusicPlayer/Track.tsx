@@ -1,7 +1,18 @@
-import React from 'react';
-import { songCover } from '../../assets';
+interface ITrack {
+  id: number;
+  title: string;
+  artist: string;
+  url: string | null;
+  image: string;
+}
 
-const Track = ({ isPlaying, isActive, activeSong }) => (
+interface TrackProps {
+  isPlaying: boolean;
+  isActive: boolean;
+  activeSong: ITrack | null;
+}
+
+const Track = ({ isPlaying, isActive, activeSong } : TrackProps) => (
   <div className="track-container">
     <div className={`${isPlaying && isActive ? 'animate-[spin_3s_linear_infinite]' : ''} track-img-con`}>
       <img src={activeSong?.image} alt="cover art" className="track-img" />

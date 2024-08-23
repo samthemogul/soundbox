@@ -7,7 +7,7 @@ import { MdPlace } from "react-icons/md";
 import { MdLibraryMusic } from "react-icons/md";
 import { IoPerson } from "react-icons/io5";
 import "../styles/sidebar.css";
-import { useState } from "react";
+
 import ThemeButton from "../components/ThemeButton";
 
 const links = [
@@ -17,11 +17,9 @@ const links = [
   { name: "Top Songs", to: "/top-songs", icon: MdLibraryMusic },
 ];
 
-interface NavLinksProps {
-  handleClick: () => void;
-}
 
-const NavLinks = ({ handleClick }: NavLinksProps) => (
+
+const NavLinks = () => (
   <div className="menu-container">
     {links.map((item) => {
       return (
@@ -40,8 +38,7 @@ const NavLinks = ({ handleClick }: NavLinksProps) => (
 );
 
 const Sidebar = () => {
-  const { theme } = useTheme();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const { theme } = useTheme() || {};
   return (
     <div className='container'>
       <div className="header-container">
@@ -56,14 +53,14 @@ const Sidebar = () => {
         </div>
 
         <div>
-          <button onClick={() => setMobileMenuOpen(false)} className="sidebar-icon-button">
+          <button className="sidebar-icon-button">
             <IoMdClose className="sidebar-toggle-icon" />
           </button>
         </div>
       </div>
 
       <div>
-        <NavLinks handleClick={() => setMobileMenuOpen(false)} />
+        <NavLinks />
       </div>
       <div className="theme-toggle-container">
         <p>Change Mode</p>

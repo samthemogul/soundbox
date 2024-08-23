@@ -7,7 +7,7 @@ import '../styles/components/mobileheader.css'
 
 const MobileHeader = () => {
 
-    const { theme, toggleTheme } = useTheme();
+    const { theme, toggleTheme } = useTheme() || {};
   return (
     <div className='mobile-header-container'>
         <div className='mobile-h-logo-con'>

@@ -3,12 +3,11 @@ import { FaPlay, FaPause } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { setActiveSong, playPause } from "../redux/slices/playerSlice";
 import { RootState } from "../redux/store";
-import { RootObject } from "../@types/songs";
-import { useFetch } from "../hooks/useFetch";
+
 
 interface ITopSong {
   position: number;
-  id: string;
+  id: number;
   title: string;
   artist: string;
   url: string | null;
@@ -23,10 +22,10 @@ const DashboardTopSong = ({
   url,
   image,
 }: ITopSong) => {
-  const { isActive, isPlaying, currentIndex } = useSelector(
+  const { isActive, isPlaying, currentIndex, currentSongs } = useSelector(
     (state: RootState) => state.player
   );
-  const { data, isFetching, error } = useFetch<RootObject>("spotify", `recommendations/?limit=20&seed_tracks=${id}`);
+  
 
   const dispatch = useDispatch();
 
@@ -37,20 +36,12 @@ const DashboardTopSong = ({
       return;
     }
     
-  const songs = data!.tracks.map((track) => {
-    return {
-      id: track.id,
-      title: track.name,
-      artist: track.artists[0].name,
-      url: track.preview_url,
-      image: track.album.images[0].url!,
-    }
-  })
+  
     dispatch(
       setActiveSong({
         song: { id, title, artist, url, image },
         i: position - 1,
-        relatedSongs: songs
+        relatedSongs: currentSongs
       })
     );
     if (isPlaying) dispatch(playPause(false));

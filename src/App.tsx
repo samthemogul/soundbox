@@ -20,7 +20,7 @@ import MobileHeader from "./components/MobileHeader";
 
 function App() {
 
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme() || {};
   return (
     <div className={`${theme} main-container`}>
       {/* {theme}

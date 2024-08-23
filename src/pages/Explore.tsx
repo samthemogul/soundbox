@@ -48,7 +48,7 @@ const Explore = () => {
       
       setLoadingStatus(false);
     }
-  }, [activeGenre, isLoading, data]);
+  }, [activeGenre, isLoading, data, error]);
 
   return (
     <div>

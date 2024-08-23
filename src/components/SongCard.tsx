@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+
 import '../styles/components/songcard.css'
 import { FaPlay, FaPause } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux'
-import { useFetch } from '../hooks/useFetch'
-import { RootObject } from '../@types/songs'
+
 import { RootState } from '../redux/store'
 import { playPause, setActiveSong } from '../redux/slices/playerSlice'
 
@@ -26,7 +25,7 @@ interface SongCardProps {
 }
 
 const SongCard = ({ song, relatedSongs } : SongCardProps) => {
-  const { isActive, isPlaying, currentIndex, activeSong } = useSelector(
+  const { isActive, isPlaying, activeSong } = useSelector(
     (state: RootState) => state.player
   );
 

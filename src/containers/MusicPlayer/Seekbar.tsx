@@ -1,6 +1,15 @@
 import React from 'react';
 
-const Seekbar = ({ value, min, max, onInput, setSeekTime, appTime }) => {
+interface SeekBarProps {
+  value: number;
+  min: number;
+  max: number;
+  onInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setSeekTime: (time: number) => void;
+  appTime: number;
+}
+
+const Seekbar = ({ value, min, max, onInput, setSeekTime } : SeekBarProps) => {
   // converts the time to format 0:00
   const getTime = (time: number) => `${Math.floor(time / 60)}:${(`0${Math.floor(time % 60)}`).slice(-2)}`;
 
@@ -13,7 +22,7 @@ const Seekbar = ({ value, min, max, onInput, setSeekTime, appTime }) => {
         value={value}
         onInput={onInput}
         onChange={(event) => setSeekTime(Number(event.target.value))}
-        min={0}
+        min={min}
         max={max}
         className="range-input player"
       />

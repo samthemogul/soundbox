@@ -5,13 +5,12 @@ import DashboardTopSong from "../components/DashboardTopSong";
 import DashboardTopArtists from "../components/DashboardTopArtists";
 import { useFetch } from "../hooks/useFetch";
 import { useEffect, useState } from "react";
-import { ArtistsRootObject } from "../@types/artists";
-import { RootObject } from "../@types/songs";
+import { ChartsRootObject } from "../@types/charts-songs";
 
 
 interface ITopSong {
   position: number;
-  id: string;
+  id: number;
   title: string;
   artist: string;
   url: string | null;
@@ -19,7 +18,7 @@ interface ITopSong {
 }
 
 export interface ITopArtist {
-  id: string;
+  id: number;
   name: string;
   image: string;
 }
@@ -30,13 +29,9 @@ let topArtists: ITopArtist[] | undefined = [];
 
 
 const AuxContainer = () => {
-  const { data, isLoading, error } = useFetch<RootObject>(
-    "spotify",
-    `recommendations/?limit=20&seed_genres=pop`
-  );
-  const results = useFetch<ArtistsRootObject>(
-    "spotify",
-    "artists/?ids=6JL8zeS1NmiOftqZTRgdTz%2C6jJ0s89eD6GaHleKKya26X%2C1gPhS1zisyXr5dHTYZyiMe%2C7iZtZyCzp3LItcw1wtPI3D"
+  const { data, isLoading} = useFetch<ChartsRootObject>(
+    "deezer",
+    "chart/0"
   );
   const [loadingStatus, setLoadingStatus] = useState<boolean>(isLoading);
 
@@ -45,21 +40,21 @@ const AuxContainer = () => {
     if (isLoading) {
       setLoadingStatus(true);
     } else {
-      topSongs = data!.tracks.map((track, i) => {
+      topSongs = data!.tracks.data.map((track) => {
         return {
-          position: ++i,
+          position: track.position,
           id: track.id,
-          title: track.name,
-          artist: track.artists[0].name,
-          url: track.preview_url,
-          image: track.album.images[0].url!,
+          title: track.title,
+          artist: track.artist.name,
+          url: track.preview,
+          image: track.album.cover!,
         }
       })
-      topArtists = results.data!.artists.map((artist) => {
+      topArtists = data!.artists.data.map((artist) => {
         return {
           id: artist.id,
           name: artist.name,
-          image: artist.images[0].url
+          image: artist.picture
         }
       })
       
@@ -75,19 +70,22 @@ const AuxContainer = () => {
         </div>
       <div className="top-songs">
         <div className="top-songs-con">
-        {topSongs!.map((song: ITopSong) => {
-          return (
-            <DashboardTopSong
-            key={song.id}
-            position={song.position}
-              id={song.id}
-              title={song.title}
-              artist={song.artist}
-              url={song.url}
-              image={song.image}
-            />
-          );
-        })}
+
+        { loadingStatus ? <h3>Loading...</h3> : (
+          topSongs!.map((song: ITopSong) => {
+            return (
+              <DashboardTopSong
+              key={song.id}
+              position={song.position}
+                id={song.id}
+                title={song.title}
+                artist={song.artist}
+                url={song.url}
+                image={song.image}
+              />
+            );
+          })
+        )}
         </div>
         
         

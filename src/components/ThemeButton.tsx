@@ -5,7 +5,7 @@ import '../styles/components/themebutton.css'
 
 const ThemeButton = () => {
 
-    const { theme, toggleTheme } = useTheme()
+    const { theme, toggleTheme } = useTheme() || {};
   return (
     <div className="theme-btn-container">
         <button className="theme-btn">

@@ -8,7 +8,7 @@ import {
 } from "react-icons/bs";
 
 interface ITrack {
-  id: string;
+  id: number;
   title: string;
   artist: string;
   url: string | null;

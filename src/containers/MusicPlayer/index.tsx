@@ -12,17 +12,17 @@ import { RootState } from "../../redux/store";
 const MusicPlayer = () => {
   const { activeSong, currentSongs, currentIndex, isActive, isPlaying } =
       useSelector((state: RootState) => state.player);
-  const [duration, setDuration] = useState(0);
-  const [seekTime, setSeekTime] = useState(0);
-  const [appTime, setAppTime] = useState(0);
-  const [volume, setVolume] = useState(0.3);
-  const [repeat, setRepeat] = useState(false);
-  const [shuffle, setShuffle] = useState(false);
+  const [duration, setDuration] = useState<number>(0);
+  const [seekTime, setSeekTime] = useState<number>(0);
+  const [appTime, setAppTime] = useState<number>(0);
+  const [volume, setVolume] = useState<number>(0.3);
+  const [repeat, setRepeat] = useState<boolean>(false);
+  const [shuffle, setShuffle] = useState<boolean>(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (currentSongs.length) dispatch(playPause(true));
-  }, [currentIndex]);
+  }, [currentIndex, currentSongs.length, dispatch]);
 
   const handlePlayPause = () => {
     if (!isActive) return;
@@ -76,7 +76,7 @@ const MusicPlayer = () => {
           />
           <Seekbar
             value={appTime}
-            min="0"
+            min={0}
             max={duration}
             onInput={(event: ChangeEvent<HTMLInputElement>) => setSeekTime(Number(event.target.value))}
             setSeekTime={setSeekTime}
@@ -96,8 +96,8 @@ const MusicPlayer = () => {
         </div>
         <VolumeBar
           value={volume}
-          min="0"
-          max="1"
+          min={0}
+          max={1}
           onChange={(event: ChangeEvent<HTMLInputElement>) => setVolume(Number(event.target.value))}
           setVolume={setVolume}
         />
