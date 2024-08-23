@@ -1,0 +1,58 @@
+.dark {
+  /* background: var(--dark-blue); */
+  /* linear gradient background */
+  background: linear-gradient(
+    180deg,
+    var(--light-accent),
+    var(--light-blue),
+    var(--dark-blue),
+    var(--dark-blue),
+    var(--dark-blue)
+  );
+}
+
+.light {
+  background: var(--light-pink);
+}
+.mainbody {
+  display: flex;
+  flex-direction: row;
+  padding: 0 20px 0 20px;
+  gap: 30px;
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+}
+.center-content {
+  width: 65%;
+}
+.aux-content {
+  display: flex;
+  width: 35%;
+  overflow-y: auto;
+  height: 600px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  .mainbody {
+    padding: 0 10px 0 10px;
+    flex-direction: column;
+    gap: 10px;
+    width: 100vw;
+    height: 110vh;
+  }
+  .center-content {
+    width: 100%;
+  }
+  .main-container {
+    display: flex;
+    flex-direction: row;
+  }
+}

@@ -1,0 +1,37 @@
+.mobile-header-container {
+    display: none;
+}
+
+
+
+@media(max-width: 768px){
+    .dark {
+        .mobile-header-text {
+            color: var(--light);
+        }
+    }
+    .light {
+        .mobile-header-text {
+            color: var(--accent);
+        }
+    }
+
+    .mobile-header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        .mobile-h-logo-con {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .header-logo-img {
+            width: 40px;
+            height: 35px;
+        }
+        .mobile-header-text {
+            font-size: 18px;
+        }
+    }
+}
