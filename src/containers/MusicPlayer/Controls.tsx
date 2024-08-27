@@ -42,7 +42,7 @@ const Controls = ({
   <div className="controls-con">
     <BsArrowRepeat
       size={20}
-      color={repeat ? "red" : "white"}
+      color={repeat ? "#FE476E" : "white"}
       onClick={() => setRepeat((prev) => !prev)}
       className="repeat-icon"
     />
@@ -79,7 +79,7 @@ const Controls = ({
     ) : null }
     <BsShuffle
       size={20}
-      color={shuffle ? "red" : "white"}
+      color={shuffle ? "#FE476E" : "white"}
       onClick={() => setShuffle((prev) => !prev)}
       className="shuffle-icon"
     />

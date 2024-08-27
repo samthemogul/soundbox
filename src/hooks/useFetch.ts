@@ -13,8 +13,13 @@ export const useFetch = <T>(type: string, url: string) => {
     const fetchData = async () => {
       try {
         if( type == "deezer") {
-            const response = await axios.get(`https://api.deezer.com/${url}`
-            );
+            const response = await axios.get(`https://soundbox-server.onrender.com/${url}`,{
+              headers : {
+                "Access-Control-Allow-Origin": "*",
+                
+              }
+            });
+            
             setData(response.data);
         }
       } catch (error: unknown) {

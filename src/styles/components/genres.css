@@ -17,7 +17,7 @@
   text-align: center;
   justify-content: center;
   padding: 7px 10px 7px 10px;
-  min-width: 100px;
+  min-width: 150px;
   border-radius: 50px;
   color: var(--light);
   font-size: 1rem;
@@ -57,7 +57,7 @@
     text-align: center;
     justify-content: center;
     padding: 7px 10px 7px 10px;
-    min-width: 100px;
+    min-width: 150px;
     border-radius: 50px;
     color: var(--light);
     font-size: 1rem;

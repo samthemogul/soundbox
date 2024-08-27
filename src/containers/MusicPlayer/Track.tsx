@@ -14,7 +14,7 @@ interface TrackProps {
 
 const Track = ({ isPlaying, isActive, activeSong } : TrackProps) => (
   <div className="track-container">
-    <div className={`${isPlaying && isActive ? 'animate-[spin_3s_linear_infinite]' : ''} track-img-con`}>
+    <div className={`${isPlaying && isActive ? 'active' : ''} track-img-con`}>
       <img src={activeSong?.image} alt="cover art" className="track-img" />
     </div>
     <div className="track-detail-con">

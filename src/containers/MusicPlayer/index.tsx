@@ -1,4 +1,4 @@
-import  { useState, useEffect, ChangeEvent } from "react";
+import  { useState, ChangeEvent } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { nextSong, prevSong, playPause } from "../../redux/slices/playerSlice";
 import Controls from "./Controls";
@@ -20,9 +20,9 @@ const MusicPlayer = () => {
   const [shuffle, setShuffle] = useState<boolean>(false);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (currentSongs.length) dispatch(playPause(true));
-  }, [currentIndex, currentSongs.length, dispatch]);
+  // useEffect(() => {
+  //   if (currentSongs.length) dispatch(playPause(true));
+  // }, [currentIndex, currentSongs.length, dispatch]);
 
   const handlePlayPause = () => {
     if (!isActive) return;

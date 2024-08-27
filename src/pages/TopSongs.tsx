@@ -2,7 +2,9 @@
 
 const TopSongs = () => {
   return (
-    <div>TopSongs</div>
+    <div>
+      <h1 className="coming-soon">Coming soon...</h1>
+    </div>
   )
 }
 

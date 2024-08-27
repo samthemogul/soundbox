@@ -39,6 +39,21 @@
   display: flex;
   flex-direction: row;
 }
+.coming-soon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  font-size: 3rem;
+  padding-top: 50px;
+  color: var(--light);
+}
+.light {
+  .coming-soon {
+    color: var(--dark);
+  }
+}
 
 @media (max-width: 768px) {
   .mainbody {
@@ -50,6 +65,9 @@
   }
   .center-content {
     width: 100%;
+  }
+  .coming-soon {
+    font-size: 2rem;
   }
   .main-container {
     display: flex;

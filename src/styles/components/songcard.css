@@ -24,6 +24,11 @@
   align-items: center;
   background: rgba(255, 255, 255, 0.4);
 }
+.light {
+  .song-card-play {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
 .song-card-play-icon {
   color: var(--light);
 }
@@ -35,11 +40,15 @@
 }
 .song-title {
   font-size: 1.1rem;
-  
+  font-weight: 700;
   max-width: 150px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  color: var(--dark);
+}
+.song-title:hover {
+  text-decoration: underline;
 }
 .song-artist {
   font-size: 0.9rem;
@@ -48,6 +57,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 
 .dark {
   .song-card-container {

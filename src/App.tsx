@@ -10,12 +10,12 @@ import {
   TopSongs,
 } from "./pages";
 import Sidebar from "./containers/Sidebar";
-import SearchBar from "./components/SearchBar";
 import AuxContainer from "./containers/AuxContainer";
 import MusicPlayer from "./containers/MusicPlayer";
 
 import useTheme from "./hooks/useTheme";
 import MobileHeader from "./components/MobileHeader";
+import MobileNav from "./containers/MobileNav";
 
 
 function App() {
@@ -28,8 +28,8 @@ function App() {
       <Sidebar />
       <main className="mainbody">
         <div className="center-content">
+          <MobileNav />
           <MobileHeader />
-          <SearchBar />
 
           <div>
             <div>

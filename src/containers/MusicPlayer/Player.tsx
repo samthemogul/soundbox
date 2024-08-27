@@ -41,11 +41,16 @@ const Player = ({
   }
 
   useEffect(() => {
-    ref.current!.volume = volume;
+    if(ref.current){
+      ref.current!.volume = volume;
+    }
+    
   }, [volume]);
   // updates audio element only on seekTime change (and not on each rerender):
   useEffect(() => {
-    ref.current!.currentTime = seekTime;
+    if(ref.current){
+      ref.current!.currentTime = seekTime;
+    }
   }, [seekTime]);
 
   if (!activeSong?.url) return null
